@@ -1,6 +1,7 @@
-#include <LoRaWan_CayenneLPP.h>
-#include <LoRaWan_esp32.h>
-#include "LoRaWan_config.h"
+#include <EzLoRaWAN_CayenneLPP.h>
+#include <EzLoRaWAN.h>
+#include "LoRaWAN_config.h"
+
 /***************************************************************************
  *  Go to your TTN console register a device then the copy fields
  *  and replace the CHANGE_ME strings below
@@ -9,8 +10,8 @@ const char* devEui = config_devEui; // Change to TTN Device EUI
 const char* appEui = config_appEui; // Change to TTN Application EUI
 const char* appKey = config_appKey; // Chaneg to TTN Application Key
 
-LoRaWan_esp32 ttn;
-LoRaWan_CayenneLPP lpp;
+EzLoRaWAN ttn;
+EzLoRaWAN_CayenneLPP lpp;
 #ifndef AUTO_PIN_MAP // AUTO_PIN_MAP is set if board is defined in the file target-config.h
 #include "board_config.h"
 #endif // !AUTO_PINS
