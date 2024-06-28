@@ -357,7 +357,12 @@ public:
 	/// @return A string containing the Device EUI or MAC Address
 	///
 	String getDevEui(bool hardwareEui = false);
-
+	///
+/// Copy the Application Key into the given buffer
+/// @param buffer The buffer
+/// @return The number of bytes copied to the buffer
+///
+	size_t getPartialAppKey(byte* buf);
 
 	///
 	/// Get the MAC address of the ESP

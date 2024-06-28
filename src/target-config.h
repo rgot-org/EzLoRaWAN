@@ -131,7 +131,7 @@
 
 // 16 μs per tick
 // LMIC requires ticks to be 15.5μs - 100 μs long
-#define US_PER_OSTICK_EXPONENT 4
+#define US_PER_OSTICK_EXPONENT 5
 #define US_PER_OSTICK (1 << US_PER_OSTICK_EXPONENT)
 #define OSTICKS_PER_SEC (1000000 / US_PER_OSTICK)
 

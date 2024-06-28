@@ -1,6 +1,7 @@
 //
 //
 //
+#include "helper.h"
 #include "EzLoRaWAN.h"
 #include "oslmic_types.h"
 #include "BasicMAC/hal/hal.h"
@@ -8,7 +9,7 @@
 #include <Preferences.h>
 #include "esp_log.h"
 #include "esp_mac.h"
-#include "helper.h"
+
 
 #define LOOP_LoRaWan_MS 1
 
@@ -342,7 +343,7 @@ bool EzLoRaWAN::isProvisioned()
 bool EzLoRaWAN::saveKeys()
 {
 	bool success = false;
-	if (prefs.begin(NVS_FLASH_PARTITION, false, NVS_FLASH_PARTITION))
+	if (prefs.begin(NVS_FLASH_PARTITION, false))
 	{
 		if (prefs.putBytes(NVS_FLASH_KEY_DEV_EUI, dev_eui, sizeof(dev_eui))
 			&& prefs.putBytes(NVS_FLASH_KEY_APP_EUI, app_eui, sizeof(app_eui))
@@ -358,7 +359,7 @@ bool EzLoRaWAN::saveKeys()
 
 bool EzLoRaWAN::restoreKeys(bool silent)
 {
-	if (prefs.begin(NVS_FLASH_PARTITION, true, NVS_FLASH_PARTITION)) {
+	if (prefs.begin(NVS_FLASH_PARTITION, true)) {
 		uint8_t buf_dev_eui[8];
 		uint8_t buf_app_eui[8];
 		uint8_t buf_app_key[16];
@@ -539,6 +540,16 @@ String EzLoRaWAN::getDevEui(bool hardwareEUI)
 		}
 	}
 	return String(hexbuf);
+}
+
+size_t EzLoRaWAN::getPartialAppKey(byte* buf)
+{
+	memcpy(buf, app_key, 16);
+	for (size_t i = 4; i < 12; i++)
+	{
+		buf[i] = '*';
+	}
+	return 16;
 }
 
 String EzLoRaWAN::getMac()
