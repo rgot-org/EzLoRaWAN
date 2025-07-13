@@ -1,6 +1,6 @@
 #include <EzLoRaWAN.h>
 
-#include "EzLoRaWan_CayenneLPP.h"
+#include "EzLoRaWAN_CayenneLPP.h"
 /***************************************************************************
  *  Go to your TTN console register a device then the copy fields
  *  and replace the CHANGE_ME strings below
@@ -10,7 +10,7 @@ const char* nwkSKey = "CHANGE_ME"; // Change to TTN Network Session Key
 const char* appSKey = "CHANGE_ME"; // Change to TTN Application Session Key
 
 EzLoRaWAN ttn ;
-EzLoRaWan_CayenneLPP lpp;
+EzLoRaWAN_CayenneLPP lpp;
 
 void message(const uint8_t* payload, size_t size, int rssi)
 {
