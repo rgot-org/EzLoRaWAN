@@ -4,7 +4,7 @@
 // Use of this source code is governed by the MIT license that can be found in
 // the LICENSE file.
 
-#include "EzLoRaWan_CayenneLPP.h"
+#include "EzLoRaWAN_CayenneLPP.h"
 
 EzLoRaWAN_CayenneLPP::EzLoRaWAN_CayenneLPP(uint8_t size) : maxsize(size)
 {
